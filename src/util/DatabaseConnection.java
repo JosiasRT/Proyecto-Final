@@ -7,9 +7,9 @@ import java.sql.Statement;
 
 public class DatabaseConnection {
 
-  private static final String URL = "jdbc:mysql://localhost:3306/pcstore?useSSL=false&serverTimezone=UTC";
-  private static final String USER = "root";
-  private static final String PASSWORD = "123456";
+  private static final String URL = "jdbc:postgresql://dpg-d20u3jjipnbc73dn46jg-a.oregon-postgres.render.com:5432/pcstore";
+  private static final String USER = "pcstore_user";
+  private static final String PASSWORD = "z1xvCpTQqA8bzanh0smI0pAS7rcBQfKE";
 
   public static Connection getConnection() throws SQLException {
     try {
