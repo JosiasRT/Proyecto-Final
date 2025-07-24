@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 import java.util.ArrayList;
 
@@ -42,6 +42,6 @@ public class TiendaComputadora {
     public void setFacturas(ArrayList<Factura> facturas) {
         this.facturas = facturas;
     }
-	
-	
+
+
 }

@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public class Microprocesador extends Componente {
     private String modelo;
@@ -30,5 +30,5 @@ public class Microprocesador extends Componente {
         this.velocidadPorcesamiento = velocidadPorcesamiento;
     }
 
-    
+
 }

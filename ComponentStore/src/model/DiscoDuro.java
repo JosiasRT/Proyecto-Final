@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public class DiscoDuro extends Componente{
     private String modelo;
@@ -30,5 +30,5 @@ public class DiscoDuro extends Componente{
         this.tipoConexion = tipoConexion;
     }
 
-    
+
 }

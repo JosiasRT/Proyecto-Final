@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 import java.util.ArrayList;
 
@@ -6,7 +6,7 @@ public class Combo {
     private int idCombo;
     private float descuento;
     private ArrayList<Componente> componentesCombo;
-    
+
     public Combo(int idCombo, float descuento) {
         this.idCombo = idCombo;
         this.descuento = descuento;
@@ -36,5 +36,5 @@ public class Combo {
         this.componentesCombo = componentesCombo;
     }
 
-    
+
 }

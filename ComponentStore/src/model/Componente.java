@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public abstract class Componente {
     protected String numeroSerie;
@@ -40,5 +40,5 @@ public abstract class Componente {
         this.marca = marca;
     }
 
-    
+
 }

@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public class Ram extends Componente{
     private String cantidadMemoria;
@@ -22,5 +22,5 @@ public class Ram extends Componente{
         this.tipoMemoria = tipoMemoria;
     }
 
-    
+
 }

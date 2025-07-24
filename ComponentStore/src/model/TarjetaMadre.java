@@ -1,10 +1,10 @@
-package logic;
+package model;
 
 public class TarjetaMadre extends Componente {
     private String modelo;
     private String tipoConector;
     private String tipoMemoriaRam;
-    
+
     public TarjetaMadre(String numeroSerie, int id, float precio, int cantidadDisponible, String marca, String modelo,
             String tipoConector, String tipoMemoriaRam) {
         super(numeroSerie, id, precio, cantidadDisponible, marca);
@@ -37,5 +37,5 @@ public class TarjetaMadre extends Componente {
         this.tipoMemoriaRam = tipoMemoriaRam;
     }
 
-    
+
 }

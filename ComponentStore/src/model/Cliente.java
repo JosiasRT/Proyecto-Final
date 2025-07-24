@@ -1,4 +1,4 @@
-package logic;
+package model;
 
 public class Cliente {
     private String idCliente;
@@ -6,7 +6,7 @@ public class Cliente {
     private String apellido;
     private String email;
     private String telefono;
-    
+
     public Cliente(String idCliente, String nombre, String apellido, String email, String telefono) {
         this.idCliente = idCliente;
         this.nombre = nombre;
@@ -55,5 +55,5 @@ public class Cliente {
         this.telefono = telefono;
     }
 
-    
+
 }
