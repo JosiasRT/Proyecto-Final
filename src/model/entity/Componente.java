@@ -1,4 +1,4 @@
-package model;
+package model.entity;
 
 public abstract class Componente {
     protected String numeroSerie;

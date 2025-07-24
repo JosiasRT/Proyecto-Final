@@ -1,26 +1,33 @@
-package model;
+package model.entity;
 
 public class Cliente {
-    private String idCliente;
+    private int clienteID;
     private String nombre;
     private String apellido;
     private String email;
     private String telefono;
 
-    public Cliente(String idCliente, String nombre, String apellido, String email, String telefono) {
-        this.idCliente = idCliente;
+    public Cliente(String nombre, String apellido, String email, String telefono) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.email = email;
         this.telefono = telefono;
     }
 
-    public String getIdCliente() {
-        return idCliente;
+    public Cliente(int clienteID, String nombre, String apellido, String email, String telefono) {
+        this.clienteID = clienteID;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
     }
 
-    public void setIdCliente(String idCliente) {
-        this.idCliente = idCliente;
+    public int getClienteID() {
+        return clienteID;
+    }
+
+    public void setClienteID(int clienteID) {
+        this.clienteID = clienteID;
     }
 
     public String getNombre() {
@@ -36,7 +43,7 @@ public class Cliente {
     }
 
     public void setApellido(String apellido) {
-        this.apellido = apellido;
+        this.apellido = telefono;
     }
 
     public String getEmail() {
@@ -54,6 +61,5 @@ public class Cliente {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
 
 }

@@ -1,4 +1,4 @@
-package model;
+package model.entity;
 
 public class Ram extends Componente{
     private String cantidadMemoria;
