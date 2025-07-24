@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowListener; // Importar WindowListener
 
 public class ClienteView extends JFrame {
   private JTextField txtId;
@@ -17,25 +18,25 @@ public class ClienteView extends JFrame {
   private JButton btnActualizar;
   private JButton btnEliminar;
   private JButton btnLimpiar;
+  private JButton btnVolver; // Nuevo botón para volver
   private JTable clienteTable;
   private DefaultTableModel tableModel;
 
   public ClienteView() {
     setTitle("Gestión de Clientes - MVC");
     setSize(800, 600);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setLocationRelativeTo(null); // Centrar la ventana
+    // CAMBIO CLAVE: No salir de la aplicación al cerrar esta ventana
+    setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE); // Solo cierra esta ventana
+    setLocationRelativeTo(null);
 
-    // Panel principal con BorderLayout
     JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
-    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10)); // Margen
+    mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
 
-    // --- Panel de Entrada de Datos (NORTH) ---
-    JPanel inputPanel = new JPanel(new GridLayout(5, 2, 5, 5)); // 5 filas, 2 columnas, espaciado
+    JPanel inputPanel = new JPanel(new GridLayout(5, 2, 5, 5));
     inputPanel.setBorder(BorderFactory.createTitledBorder("Datos del Cliente"));
 
     txtId = new JTextField();
-    txtId.setEditable(false); // El ID no se edita manualmente
+    txtId.setEditable(false);
     inputPanel.add(new JLabel("ID Cliente:"));
     inputPanel.add(txtId);
 
@@ -57,31 +58,30 @@ public class ClienteView extends JFrame {
 
     mainPanel.add(inputPanel, BorderLayout.NORTH);
 
-    // --- Panel de Botones (CENTER - arriba de la tabla) ---
-    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10)); // Centrado, espaciado
+    JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 10));
     btnAgregar = new JButton("Agregar");
     btnActualizar = new JButton("Actualizar");
     btnEliminar = new JButton("Eliminar");
     btnLimpiar = new JButton("Limpiar Campos");
+    btnVolver = new JButton("Volver al Inicio"); // Inicializar el nuevo botón
 
     buttonPanel.add(btnAgregar);
     buttonPanel.add(btnActualizar);
     buttonPanel.add(btnEliminar);
     buttonPanel.add(btnLimpiar);
+    buttonPanel.add(btnVolver); // Añadir el nuevo botón
 
-    // --- Tabla de Clientes (CENTER - debajo de los botones) ---
     String[] columnNames = { "ID", "Nombre", "Apellido", "Email", "Teléfono" };
     tableModel = new DefaultTableModel(columnNames, 0) {
       @Override
       public boolean isCellEditable(int row, int column) {
-        return false; // Hacer que las celdas de la tabla no sean editables
+        return false;
       }
     };
     clienteTable = new JTable(tableModel);
-    clienteTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION); // Solo una fila seleccionable
-    JScrollPane scrollPane = new JScrollPane(clienteTable); // Añadir scroll si hay muchos clientes
+    clienteTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    JScrollPane scrollPane = new JScrollPane(clienteTable);
 
-    // Añadir listener para seleccionar fila y cargar datos en los campos
     clienteTable.addMouseListener(new MouseAdapter() {
       @Override
       public void mouseClicked(MouseEvent e) {
@@ -96,7 +96,6 @@ public class ClienteView extends JFrame {
       }
     });
 
-    // Panel intermedio para los botones y la tabla
     JPanel centerPanel = new JPanel(new BorderLayout(10, 10));
     centerPanel.add(buttonPanel, BorderLayout.NORTH);
     centerPanel.add(scrollPane, BorderLayout.CENTER);
@@ -111,7 +110,7 @@ public class ClienteView extends JFrame {
     try {
       return Integer.parseInt(txtId.getText());
     } catch (NumberFormatException e) {
-      return -1; // Indica que no hay ID válido o está vacío
+      return -1;
     }
   }
 
@@ -133,7 +132,7 @@ public class ClienteView extends JFrame {
 
   // --- Métodos para que el Controlador actualice la Vista ---
   public void setTableData(Object[][] data) {
-    tableModel.setRowCount(0); // Limpiar tabla
+    tableModel.setRowCount(0);
     for (Object[] row : data) {
       tableModel.addRow(row);
     }
@@ -168,8 +167,17 @@ public class ClienteView extends JFrame {
     btnLimpiar.addActionListener(listener);
   }
 
-  // Getters para los botones (necesarios para el Controlador para identificar la
-  // fuente del evento)
+  // Nuevo método para añadir listener al botón de volver
+  public void addVolverButtonListener(ActionListener listener) {
+    btnVolver.addActionListener(listener);
+  }
+
+  // Nuevo método para añadir un WindowListener
+  public void addWindowCloseListener(WindowListener listener) {
+    this.addWindowListener(listener);
+  }
+
+  // Getters para los botones
   public JButton getBtnAgregar() {
     return btnAgregar;
   }
@@ -184,5 +192,19 @@ public class ClienteView extends JFrame {
 
   public JButton getBtnLimpiar() {
     return btnLimpiar;
+  }
+
+  public JButton getBtnVolver() { // Getter para el nuevo botón
+    return btnVolver;
+  }
+
+  // Nuevo método para mostrar la vista
+  public void showView() {
+    setVisible(true);
+  }
+
+  // Nuevo método para ocultar la vista
+  public void hideView() {
+    setVisible(false);
   }
 }
