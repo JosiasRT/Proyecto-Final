@@ -12,7 +12,7 @@ public class HomeView extends JFrame {
   public HomeView() {
     setTitle("Sistema de Gestión - Inicio");
     setSize(400, 300);
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Al cerrar esta ventana, la aplicación termina
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
 
     JPanel mainPanel = new JPanel();
@@ -20,7 +20,7 @@ public class HomeView extends JFrame {
     mainPanel.setBorder(BorderFactory.createEmptyBorder(30, 30, 30, 30));
 
     btnClientes = new JButton("Gestión de Clientes");
-    btnInventario = new JButton("Gestión de Inventario");
+    btnInventario = new JButton("Gestión de Inventario"); // Este ya lo tenías, solo aseguramos el listener
     btnVentas = new JButton("Gestión de Ventas");
 
     Dimension buttonSize = new Dimension(200, 40);
@@ -50,8 +50,17 @@ public class HomeView extends JFrame {
     btnClientes.addActionListener(listener);
   }
 
+  // Nuevo método para añadir listener al botón de Inventario
+  public void addInventarioButtonListener(ActionListener listener) {
+    btnInventario.addActionListener(listener);
+  }
+
   public JButton getBtnClientes() {
     return btnClientes;
+  }
+
+  public JButton getBtnInventario() { // Getter para el botón de Inventario
+    return btnInventario;
   }
 
   // Nuevo método para mostrar la vista
