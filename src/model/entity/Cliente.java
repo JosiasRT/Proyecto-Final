@@ -43,7 +43,7 @@ public class Cliente {
     }
 
     public void setApellido(String apellido) {
-        this.apellido = telefono;
+        this.apellido = apellido;
     }
 
     public String getEmail() {
