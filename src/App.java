@@ -9,7 +9,7 @@ public class App {
         SwingUtilities.invokeLater(() -> {
             HomeView homeView = new HomeView();
             HomeController homeController = new HomeController(homeView);
-            homeView.showView(); // Mostrar la pantalla de inicio al arrancar
+            homeView.showView(); // Mostrar el menú de inicio al arrancar
         });
     }
 }

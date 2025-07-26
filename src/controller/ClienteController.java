@@ -1,7 +1,7 @@
 package controller;
 
-import model.entity.Cliente;
-import model.service.ClienteService;
+import model.Cliente;
+import model.ClienteService;
 import view.ClienteView;
 
 import javax.swing.*;
